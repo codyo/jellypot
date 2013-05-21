@@ -2,6 +2,7 @@ Jellypot::Application.routes.draw do
   root :to => 'pages#home'
 
   get 'about' => 'pages#about'
+  get 'help' => 'pages#help'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
