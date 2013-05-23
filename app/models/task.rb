@@ -3,4 +3,7 @@ class Task < ActiveRecord::Base
 
   validates :description, presence: true
   validates :taskname, presence: true
+
+  belongs_to :user
+  validates :user_id, presence: true
 end
