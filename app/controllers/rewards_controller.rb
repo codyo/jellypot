@@ -1,4 +1,6 @@
 class RewardsController < ApplicationController
+before_filter :authenticate_user!
+
   # GET /rewards
   # GET /rewards.json
   def index
@@ -24,7 +26,8 @@ class RewardsController < ApplicationController
   # GET /rewards/new
   # GET /rewards/new.json
   def new
-    @reward = Reward.new
+    #@reward = Reward.new
+    @reward = current_user.rewards.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +37,15 @@ class RewardsController < ApplicationController
 
   # GET /rewards/1/edit
   def edit
-    @reward = Reward.find(params[:id])
+    #@reward = Reward.find(params[:id])
+    @reward = current_user.rewards.find(params[:id])
   end
 
   # POST /rewards
   # POST /rewards.json
   def create
-    @reward = Reward.new(params[:reward])
+    #@reward = Reward.new(params[:reward])
+    @reward = current_user.rewards.new(params[:reward])
 
     respond_to do |format|
       if @reward.save
@@ -56,7 +61,8 @@ class RewardsController < ApplicationController
   # PUT /rewards/1
   # PUT /rewards/1.json
   def update
-    @reward = Reward.find(params[:id])
+    #@reward = Reward.find(params[:id])
+    @reward = current_user.rewards.find(params[:id])
 
     respond_to do |format|
       if @reward.update_attributes(params[:reward])
@@ -72,7 +78,8 @@ class RewardsController < ApplicationController
   # DELETE /rewards/1
   # DELETE /rewards/1.json
   def destroy
-    @reward = Reward.find(params[:id])
+    #@reward = Reward.find(params[:id])
+    @reward = current_user.rewards.find(params[:id])
     @reward.destroy
 
     respond_to do |format|
