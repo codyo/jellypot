@@ -1,4 +1,7 @@
 Jellypot::Application.routes.draw do
+  resources :rewards
+
+
   resources :tasks
 
 
